@@ -1,21 +1,39 @@
-from functions.write_file import write_file
+from functions.run_python_file import run_python_file
 
 def main():
-    # Test 1: Write file in root of calculator directory
-    print('write_file("calculator", "lorem.txt", "wait, this isn\'t lorem ipsum"):')
-    result = write_file("calculator", "lorem.txt", "wait, this isn't lorem ipsum")
+    # Test 1: Run calculator main.py without arguments (should show usage)
+    print('run_python_file("calculator", "main.py"):')
+    result = run_python_file("calculator", "main.py")
     print(result)
     print()
     
-    # Test 2: Write file in subdirectory (pkg/)
-    print('write_file("calculator", "pkg/morelorem.txt", "lorem ipsum dolor sit amet"):')
-    result = write_file("calculator", "pkg/morelorem.txt", "lorem ipsum dolor sit amet")
+    # Test 2: Run calculator with expression argument
+    print('run_python_file("calculator", "main.py", ["3 + 5"]):')
+    result = run_python_file("calculator", "main.py", ["3 + 5"])
     print(result)
     print()
     
-    # Test 3: Try to write file outside working directory (should error)
-    print('write_file("calculator", "/tmp/temp.txt", "this should not be allowed"):')
-    result = write_file("calculator", "/tmp/temp.txt", "this should not be allowed")
+    # Test 3: Run calculator tests
+    print('run_python_file("calculator", "tests.py"):')
+    result = run_python_file("calculator", "tests.py")
+    print(result)
+    print()
+    
+    # Test 4: Try to run file outside working directory (should error)
+    print('run_python_file("calculator", "../main.py"):')
+    result = run_python_file("calculator", "../main.py")
+    print(result)
+    print()
+    
+    # Test 5: Try to run non-existent file (should error)
+    print('run_python_file("calculator", "nonexistent.py"):')
+    result = run_python_file("calculator", "nonexistent.py")
+    print(result)
+    print()
+    
+    # Test 6: Try to run non-Python file (should error)
+    print('run_python_file("calculator", "lorem.txt"):')
+    result = run_python_file("calculator", "lorem.txt")
     print(result)
 
 if __name__ == "__main__":
