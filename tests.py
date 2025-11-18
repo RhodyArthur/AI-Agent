@@ -1,27 +1,21 @@
-from functions.get_file_content import get_file_content
+from functions.write_file import write_file
 
 def main():
-    # Test 1: Read main.py
-    print('get_file_content("calculator", "main.py"):')
-    result = get_file_content("calculator", "main.py")
+    # Test 1: Write file in root of calculator directory
+    print('write_file("calculator", "lorem.txt", "wait, this isn\'t lorem ipsum"):')
+    result = write_file("calculator", "lorem.txt", "wait, this isn't lorem ipsum")
     print(result)
     print()
     
-    # Test 2: Read file in subdirectory
-    print('get_file_content("calculator", "pkg/calculator.py"):')
-    result = get_file_content("calculator", "pkg/calculator.py")
+    # Test 2: Write file in subdirectory (pkg/)
+    print('write_file("calculator", "pkg/morelorem.txt", "lorem ipsum dolor sit amet"):')
+    result = write_file("calculator", "pkg/morelorem.txt", "lorem ipsum dolor sit amet")
     print(result)
     print()
     
-    # Test 3: Try to read file outside working directory (should error)
-    print('get_file_content("calculator", "/bin/cat"):')
-    result = get_file_content("calculator", "/bin/cat")
-    print(result)
-    print()
-    
-    # Test 4: Try to read non-existent file (should error)
-    print('get_file_content("calculator", "pkg/does_not_exist.py"):')
-    result = get_file_content("calculator", "pkg/does_not_exist.py")
+    # Test 3: Try to write file outside working directory (should error)
+    print('write_file("calculator", "/tmp/temp.txt", "this should not be allowed"):')
+    result = write_file("calculator", "/tmp/temp.txt", "this should not be allowed")
     print(result)
 
 if __name__ == "__main__":
