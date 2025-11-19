@@ -40,5 +40,6 @@ schema_get_file_content = types.FunctionDeclaration(
                 description="The path to the file to read, relative to the working directory. Can include subdirectories (e.g., 'pkg/calculator.py', 'main.py'). Must be a valid file path within the working directory boundaries.",
             ),
         },
+        required=["file_path"]
     ),
 )
